@@ -1,6 +1,8 @@
 # cc-statusline
 
-<img src="assets/screenshot.png" height="200" alt="cc-statusline screenshot" />
+<div align="center">
+  <img src="assets/screenshot.png" height="400" alt="cc-statusline screenshot" />
+</div>
 
 A blazing-fast Rust implementation of statusline for Claude Code, serving as a lightweight replacement for [claude-hud](https://github.com/jarrodwatts/claude-hud).
 
