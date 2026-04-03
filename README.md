@@ -6,8 +6,6 @@
 
 A blazing-fast Rust implementation of statusline for Claude Code, serving as a lightweight replacement for [claude-hud](https://github.com/jarrodwatts/claude-hud).
 
-## Why cc-statusline?
-
 - **⚡ Lightning Fast** - Rust implementation with instant startup
 - **📦 Single Binary** - No Node.js runtime required (~600KB)
 - **🔋 Battery Included** - Zero dependencies, works out of the box
