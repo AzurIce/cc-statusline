@@ -41,8 +41,17 @@
             extensions = [ "rust-src" ];
           }
         );
+        cc-statusline = craneLib.buildPackage {
+          src = craneLib.cleanCargoSource ./.;
+          strictDeps = true;
+        };
       in
       {
+        packages = {
+          default = cc-statusline;
+          inherit cc-statusline;
+        };
+
         devShells.default = craneLib.devShell {
           buildInputs = [ ];
           packages = [ ];
