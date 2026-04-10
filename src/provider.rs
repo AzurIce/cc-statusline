@@ -53,12 +53,8 @@ fn get_claude_config_path() -> Option<PathBuf> {
 }
 
 pub fn format_provider_display(url: &str) -> String {
-    // 简化显示：只显示域名部分
-    if let Some(domain) = extract_domain(url) {
-        domain
-    } else {
-        url.to_string()
-    }
+    // 直接返回完整 URL
+    url.to_string()
 }
 
 fn extract_domain(url: &str) -> Option<String> {

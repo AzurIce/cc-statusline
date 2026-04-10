@@ -9,8 +9,9 @@ pub fn render_output(
 ) {
     let mut line1 = Vec::new();
     let mut line2 = Vec::new();
+    let mut line3 = Vec::new();
 
-    // Line 1: Model, Project, Git, Version
+    // Line 1: Model, Project, Git
     if let Some(data) = stdin_data {
         let model = crate::stdin::get_model_name(data);
         line1.push(format!("{CYAN}[{model}]{RESET}"));
@@ -31,17 +32,6 @@ pub fn render_output(
             line1.push(project_part);
         }
 
-        // Claude Code version
-        if let Some(version) = cc_version {
-            line1.push(format!("{DIM}CC v{version}{RESET}"));
-        }
-
-        // Provider URL
-        if let Some(url) = provider_url {
-            let display = crate::provider::format_provider_display(url);
-            line1.push(format!("{DIM}API: {CYAN}{display}{RESET}"));
-        }
-
         // Line 2: Context
         let percent = crate::stdin::get_context_percent(data);
         let color = context_color(percent);
@@ -50,9 +40,21 @@ pub fn render_output(
         line2.push(format!("{DIM}Context{RESET} {bar} {color}{percent}%{RESET} {DIM}{usage_text}{RESET}"));
     }
 
+    // Line 3: Version and API
+    if let Some(version) = cc_version {
+        line3.push(format!("{DIM}CC v{version}{RESET}"));
+    }
+    if let Some(url) = provider_url {
+        let display = crate::provider::format_provider_display(url);
+        line3.push(format!("{DIM}API: {CYAN}{display}{RESET}"));
+    }
+
     println!("{}", line1.join(" │ "));
     if !line2.is_empty() {
         println!("{}", line2.join(" │ "));
+    }
+    if !line3.is_empty() {
+        println!("{}", line3.join(" │ "));
     }
 }
 
